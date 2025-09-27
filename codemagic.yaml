@@ -16,6 +16,4 @@ workflows:
           flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-    publishing:
-      # Si quieres subirla a Play Store, necesitarías más configuración aquí.
-      # Por ahora, solo lo dejamos vacío.
+    publishing: {} # <--- ¡Copia esto! Es la clave para que la sección no esté vacía
