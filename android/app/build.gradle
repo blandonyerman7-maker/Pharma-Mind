@@ -1,20 +1,36 @@
+def flutterMinSdkVersion = "21"
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter_build.gradle"
+
 android {
-    compileSdkVersion 33 // <--- Cambia este número a 33
+    compileSdkVersion 33 // Ya en 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // ... el resto del código
-    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
     defaultConfig {
         applicationId "com.example.tu_app"
         minSdkVersion flutterMinSdkVersion.toInteger()
-        targetSdkVersion 33 // <--- Y cambia este número también a 33
+        targetSdkVersion 33 // Ya en 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+    
+    // AQUÍ ESTABA EL BLOQUE "buildTypes" - BÓRRALO
+}
 
-    // ... el resto del código
+flutter {
+    source '../..'
 }
