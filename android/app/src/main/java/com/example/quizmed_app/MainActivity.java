@@ -1,5 +1,4 @@
-
-package com.example.quizmed_app;
+package com.tuapp; // Asegúrate de que "tuapp" coincida con el nombre de tu carpeta
 
 import io.flutter.embedding.android.FlutterActivity;
 
