@@ -1,2 +1,1 @@
-include ':app'
-rootProject.name = 'quizmed_app'
+gradle<br>include ':app'<br>
