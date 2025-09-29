@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma-Quiz | Farmacología</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-info">
+            <h1>Pharma-Quiz: Examen de Farmacología</h1>
+            <p>Desarrollado por: **Blandon Yerman**</p>
+            <p>Materia desarrollada por: **[Nombre del Profesor/a Aquí]**</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="quiz-area">
+            <h2 id="question-text">Cargando pregunta...</h2>
+            <div id="options-container" class="options-grid">
+                </div>
+            <button id="submit-btn" disabled>Siguiente Pregunta</button>
+        </div>
+
+        <div id="results-area" class="hidden">
+            <h2>Resultados Finales</h2>
+            <p id="score-text"></p>
+            <button onclick="location.reload()">Reiniciar Examen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
