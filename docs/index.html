@@ -3,893 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharma Mind Quiz</title>
+    <title>Pharma Mind - Portal de Farmacología</title>
     
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e8f4f8; /* Fondo azul muy claro */
+            background-color: #f0f8ff; /* Fondo azul cielo muy claro */
             color: #333;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #007bff; /* Azul primario */
+            background-color: #20b2aa; /* Azul verdoso suave */
             color: white;
-            padding: 20px 0;
+            padding: 25px 0;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2em;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
-            margin: 5px 0 0;
-            font-size: 0.9em;
-        }
-        
-        .quiz-logo {
-            max-width: 150px; 
-            height: auto;
-            margin: 10px auto; 
-            display: block;
-            border-radius: 8px; 
+            margin: 8px 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 30px auto;
-            padding: 20px;
+            padding: 25px;
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
             flex-grow: 1; 
         }
 
-        #quiz-area h2, #welcome-area h2, #results-area h2 {
-            color: #007bff;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        
-        /* Estilos específicos para la bienvenida y contraseña */
+        /* Estilos para la sección de bienvenida */
         #welcome-area {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            background-color: #e0f2f7; /* Un fondo más suave para la bienvenida */
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        #welcome-area h2 {
+            color: #0056b3;
+            font-size: 2em;
+            margin-bottom: 20px;
         }
 
         #welcome-area p {
-            font-size: 1.1em;
-            margin: 20px 0 10px;
+            font-size: 1.2em;
+            margin: 15px 0;
         }
         
         #password-input {
-            padding: 10px;
-            width: 80%;
+            padding: 12px;
+            width: 70%;
             max-width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 1px solid #a7d9ee;
+            border-radius: 8px;
             text-align: center;
             font-size: 1.1em;
+            margin-top: 20px;
             margin-bottom: 15px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .option-btn {
-            padding: 15px;
-            border: 2px solid #ccc;
-            background-color: #f9f9f9;
-            text-align: left;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1em;
-        }
-
-        .option-btn:hover:not(:disabled) {
-            background-color: #d0e8f2;
-            border-color: #007bff;
-        }
-
-        .selected {
-            border-color: #007bff !important;
-            background-color: #cce5ff !important;
-        }
-
-        .correct {
-            background-color: #28a745 !important; 
-            color: white !important;
-            border-color: #28a745 !important;
-        }
-
-        .incorrect {
-            background-color: #dc3545 !important; 
-            color: white !important;
-            border-color: #dc3545 !important;
-        }
-
-        #submit-btn, #start-quiz-btn {
+        #start-button {
             display: block;
-            width: 100%;
-            padding: 15px;
-            margin-top: 20px;
-            background-color: #28a745;
+            width: 80%;
+            max-width: 350px;
+            padding: 15px 20px;
+            margin: 20px auto 0;
+            background-color: #007bff; /* Azul vibrante */
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
-        #start-quiz-btn {
-            background-color: #007bff; 
-        }
-        
-        #start-quiz-btn:hover {
+        #start-button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
-        #submit-btn:disabled {
-            background-color: #a0d1b3;
-            cursor: not-allowed;
+        #password-error {
+            color: #d9534f; /* Rojo de error */
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+
+        /* Estilos para las secciones de contenido */
+        .content-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #fdfdfd;
+        }
+
+        .content-section h2 {
+            color: #20b2aa;
+            font-size: 1.8em;
+            border-bottom: 2px solid #e0f2f7;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            text-align: justify;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .hidden {
             display: none;
-        }
-
-        #password-error {
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-info">
-            <h1>Pharma Mind Quiz</h1>
-            <p>Desarrollado por: **Pharma Mind Team**</p>
-            <p>Materia desarrollada por: **Mariana, Stella, Dayana, Gabriela, Dania**</p>
+            <h1>Pharma Mind</h1>
+            <p>Tu Portal de Conocimiento Farmacológico</p>
         </div>
     </header>
 
     <div class="container">
         
         <div id="welcome-area">
-            <h2>¡Bienvenido/a a Pharma Mind Quiz!</h2>
-            <p>Estás a punto de iniciar una práctica de **50 preguntas** para consolidar tus conocimientos de farmacología.</p>
+            <h2>Explora el Mundo de la Farmacología</h2>
+            <p>Sumérgete en los conceptos esenciales de cómo los fármacos interactúan con nuestro cuerpo.</p>
             
-            <p>🔑 Por favor, ingresa la clave de acceso para comenzar:</p>
+            <img src="https://image.pollinations.ai/prompt/microscopes,molecules,pharmaceutical%20research,scientific%20study?width=600&height=350&seed=123" alt="Investigación Farmacéutica" class="content-image">
+            
+            <p>🔑 Por favor, ingresa la clave de acceso para comenzar tu aprendizaje:</p>
             <input type="password" id="password-input" placeholder="Clave de Acceso">
             <p id="password-error" class="hidden">⚠️ Clave incorrecta. Intenta de nuevo.</p>
             
-            <button id="start-quiz-btn">Acceder al Examen</button>
+            <button id="start-button">Acceder al Contenido</button>
         </div>
 
-        <div id="quiz-area" class="hidden">
-            <h2 id="question-text">Cargando pregunta...</h2>
-            <div id="options-container" class="options-grid">
-                </div>
-            <button id="submit-btn" disabled>Comprobar Respuesta</button>
-        </div>
+        <div id="content-area" class="hidden">
+            
+            <div class="content-section">
+                <h2>1. Introducción a la Farmacología</h2>
+                <p>La farmacología es la ciencia que estudia la interacción de los compuestos químicos (fármacos) con los sistemas biológicos, desde el nivel molecular hasta el organismo completo. Su objetivo es comprender cómo los medicamentos producen sus efectos terapéuticos y sus posibles efectos adversos, sentando las bases para el desarrollo de tratamientos efectivos y seguros.</p>
+                <img src="https://image.pollinations.ai/prompt/pharmacology,drug%20discovery,medical%20research,molecular%20interactions?width=700&height=400&seed=456" alt="Introducción a la Farmacología" class="content-image">
+            </div>
 
-        <div id="results-area" class="hidden">
-            <h2>Resultados Finales</h2>
-            <p id="score-text"></p>
-            <button onclick="location.reload()">Reiniciar Examen</button>
-        </div>
+            <div class="content-section">
+                <h2>2. Farmacocinética: ADME</h2>
+                <p>La farmacocinética describe lo que el cuerpo le hace al fármaco. Se estudia a través de cuatro procesos principales, conocidos como ADME:</p>
+                <ul>
+                    <li><strong>Absorción:</strong> Cómo el fármaco entra al torrente sanguíneo desde el sitio de administración.</li>
+                    <li><strong>Distribución:</strong> Cómo el fármaco se dispersa por los tejidos y órganos del cuerpo.</li>
+                    <li><strong>Metabolismo (Biotransformación):</strong> Cómo el cuerpo transforma el fármaco, generalmente en el hígado, para facilitar su eliminación.</li>
+                    <li><strong>Excreción:</strong> Cómo el fármaco y sus metabolitos son eliminados del cuerpo, principalmente por los riñones.</li>
+                </ul>
+                <img src="https://image.pollinations.ai/prompt/ADME,pharmacokinetics,drug%20pathway%20in%20body,arrows?width=700&height=400&seed=789" alt="Farmacocinética ADME" class="content-image">
+            </div>
+
+            <div class="content-section">
+                <h2>3. Farmacodinamia: Efecto del Fármaco</h2>
+                <p>La farmacodinamia es el estudio de lo que el fármaco le hace al cuerpo. Examina los mecanismos de acción moleculares y celulares mediante los cuales los fármacos producen sus efectos terapéuticos y tóxicos. Esto incluye la interacción con receptores específicos, enzimas, canales iónicos y otras moléculas diana.</p>
+                <p>Conceptos clave son la afinidad (la fuerza con la que un fármaco se une a su receptor) y la eficacia (la capacidad del fármaco para producir un efecto después de unirse a su receptor).</p>
+                <img src="https://image.pollinations.ai/prompt/pharmacodynamics,drug%20receptor%20interaction,molecular%20mechanism,cell%20effect?width=700&height=400&seed=1011" alt="Farmacodinamia" class="content-image">
+            </div>
+            
+            </div>
     </div>
 
     <script>
         // ====================================================================
-        // 1. CONFIGURACIÓN Y DATOS
+        // CONFIGURACIÓN Y LÓGICA
         // ====================================================================
         
         // --- CLAVE DE ACCESO ---
-        const ACCESS_PASSWORD = "farmacologia30"; 
+        const ACCESS_PASSWORD = "mibebechiquita"; 
 
-        // --- PREGUNTAS (50 Ejemplos) ---
-        const quizQuestions = [
-            // Pregunta 1
-            {
-                question: "¿Cuál es el mecanismo de acción principal de los antibióticos betalactámicos?",
-                options: [
-                    "Inhibición de la síntesis de proteínas",
-                    "Bloqueo de la bomba de protones",
-                    "Inhibición de la síntesis de pared celular",
-                    "Antagonismo de receptores muscarínicos"
-                ],
-                answer: "Inhibición de la síntesis de pared celular"
-            },
-            // Pregunta 2
-            {
-                question: "El Paracetamol (Acetaminofén) tiene propiedades:",
-                options: [
-                    "Antiinflamatorias y antipiréticas",
-                    "Antipiréticas y analgésicas",
-                    "Anticoagulantes y analgésicas",
-                    "Antiinflamatorias y sedantes"
-                ],
-                answer: "Antipiréticas y analgésicas"
-            },
-            // Pregunta 3
-            {
-                question: "¿Qué fármaco se utiliza comúnmente como antídoto para la sobredosis de opioides?",
-                options: [
-                    "Flumazenil",
-                    "Naloxona",
-                    "Atropina",
-                    "Protamin sulfato"
-                ],
-                answer: "Naloxona"
-            },
-            // Pregunta 4
-            {
-                question: "Los inhibidores de la enzima convertidora de angiotensina (IECA) suelen terminar en:",
-                options: [
-                    "-olol",
-                    "-dipino",
-                    "-pril",
-                    "-sartán"
-                ],
-                answer: "-pril"
-            },
-            // Pregunta 5
-            {
-                question: "¿Qué clase de fármaco actúa bloqueando los receptores H1 de la histamina?",
-                options: [
-                    "Antihipertensivos",
-                    "Antipiréticos",
-                    "Antihistamínicos",
-                    "Diuréticos"
-                ],
-                answer: "Antihistamínicos"
-            },
-            // Pregunta 6
-            {
-                question: "La Digoxina se utiliza para tratar la insuficiencia cardíaca debido a su efecto:",
-                options: [
-                    "Inotrópico negativo",
-                    "Dromotrópico negativo",
-                    "Inotrópico positivo",
-                    "Cronotrópico positivo"
-                ],
-                answer: "Inotrópico positivo"
-            },
-            // Pregunta 7
-            {
-                question: "La 'toxicidad de primer paso' de un fármaco ocurre principalmente en:",
-                options: [
-                    "Los riñones",
-                    "El hígado",
-                    "El cerebro",
-                    "Los pulmones"
-                ],
-                answer: "El hígado"
-            },
-            // Pregunta 8
-            {
-                question: "¿Qué efecto adverso es común en pacientes que toman antibióticos de amplio espectro?",
-                options: [
-                    "Hipotensión severa",
-                    "Fotosensibilidad",
-                    "Superinfección por C. difficile",
-                    "Hiperglucemia"
-                ],
-                answer: "Superinfección por C. difficile"
-            },
-            // Pregunta 9
-            {
-                question: "El Warfarin es un anticoagulante que antagoniza la acción de la vitamina:",
-                options: [
-                    "Vitamina B12",
-                    "Vitamina D",
-                    "Vitamina K",
-                    "Vitamina C"
-                ],
-                answer: "Vitamina K"
-            },
-            // Pregunta 10
-            {
-                question: "¿Cuál es un fármaco típico para el tratamiento de crisis de asma bronquial?",
-                options: [
-                    "Salbutamol (Albuterol)",
-                    "Lisinopril",
-                    "Metformina",
-                    "Fluoxetina"
-                ],
-                answer: "Salbutamol (Albuterol)"
-            },
-            // Pregunta 11
-            {
-                question: "El Omeprazol es un ejemplo de un inhibidor de:",
-                options: [
-                    "Receptores H2",
-                    "Bomba de protones",
-                    "Alfa-adrenérgicos",
-                    "Canales de calcio"
-                ],
-                answer: "Bomba de protones"
-            },
-            // Pregunta 12
-            {
-                question: "Los fármacos que terminan en -estatina se usan principalmente para tratar:",
-                options: [
-                    "Hipertensión",
-                    "Dislipidemia (colesterol alto)",
-                    "Diabetes tipo 2",
-                    "Artritis reumatoide"
-                ],
-                answer: "Dislipidemia (colesterol alto)"
-            },
-            // Pregunta 13
-            {
-                question: "La Neomicina es un antibiótico comúnmente usado por vía:",
-                options: [
-                    "Intravenosa",
-                    "Oral para infecciones sistémicas",
-                    "Tópica o enteral",
-                    "Intramuscular"
-                ],
-                answer: "Tópica o enteral"
-            },
-            // Pregunta 14
-            {
-                question: "¿Qué receptor es el objetivo principal de la Morfina?",
-                options: [
-                    "Receptores GABA",
-                    "Receptores Alfa-2",
-                    "Receptores Opioides Mu",
-                    "Receptores Nicotínicos"
-                ],
-                answer: "Receptores Opioides Mu"
-            },
-            // Pregunta 15
-            {
-                question: "El Diazepam pertenece a qué clase de fármaco ansiolítico e hipnótico:",
-                options: [
-                    "Barbitúricos",
-                    "Antidepresivos Tricíclicos",
-                    "Benzodiacepinas",
-                    "Inhibidores de la recaptación de serotonina"
-                ],
-                answer: "Benzodiacepinas"
-            },
-            // Pregunta 16
-            {
-                question: "La Metformina es la primera línea de tratamiento para:",
-                options: [
-                    "Diabetes tipo 1",
-                    "Hipertensión arterial",
-                    "Diabetes tipo 2",
-                    "Hipotiroidismo"
-                ],
-                answer: "Diabetes tipo 2"
-            },
-            // Pregunta 17
-            {
-                question: "¿Qué diurético es conocido por su potencial efecto ahorrador de potasio?",
-                options: [
-                    "Furosemida",
-                    "Hidroclorotiazida",
-                    "Espironolactona",
-                    "Bumetanida"
-                ],
-                answer: "Espironolactona"
-            },
-            // Pregunta 18
-            {
-                question: "La Amoxicilina es un antibiótico de la familia de:",
-                options: [
-                    "Macrólidos",
-                    "Fluoroquinolonas",
-                    "Penicilinas",
-                    "Tetraciclinas"
-                ],
-                answer: "Penicilinas"
-            },
-            // Pregunta 19
-            {
-                question: "¿Qué fármaco se usa para tratar la gota aguda al inhibir la migración de leucocitos?",
-                options: [
-                    "Alopurinol",
-                    "Febuxostat",
-                    "Colchicina",
-                    "Probenecid"
-                ],
-                answer: "Colchicina"
-            },
-            // Pregunta 20
-            {
-                question: "La Atropina es un antagonista del receptor:",
-                options: [
-                    "Adrenérgico beta",
-                    "Muscarínico",
-                    "Nicotínico",
-                    "Dopaminérgico"
-                ],
-                answer: "Muscarínico"
-            },
-            // Pregunta 21
-            {
-                question: "Los fármacos que terminan en -olol se usan para tratar:",
-                options: [
-                    "Úlceras gástricas",
-                    "Angina e hipertensión",
-                    "Infecciones fúngicas",
-                    "Depresión"
-                ],
-                answer: "Angina e hipertensión"
-            },
-            // Pregunta 22
-            {
-                question: "El antagonista H2 usado para reducir la secreción de ácido gástrico es:",
-                options: [
-                    "Omeprazol",
-                    "Ranebutal",
-                    "Cimetidina",
-                    "Misoprostol"
-                ],
-                answer: "Cimetidina"
-            },
-            // Pregunta 23
-            {
-                question: "La Ciprofloxacina pertenece a la clase de antibióticos:",
-                options: [
-                    "Cefalosporinas",
-                    "Aminoglucósidos",
-                    "Fluoroquinolonas",
-                    "Lincosamidas"
-                ],
-                answer: "Fluoroquinolonas"
-            },
-            // Pregunta 24
-            {
-                question: "Un efecto adverso común de la Levotiroxina es:",
-                options: [
-                    "Hipotermia",
-                    "Bradicardia",
-                    "Palpitaciones y taquicardia",
-                    "Ganancia de peso"
-                ],
-                answer: "Palpitaciones y taquicardia"
-            },
-            // Pregunta 25
-            {
-                question: "¿Qué antidepresivo es un inhibidor selectivo de la recaptación de serotonina (ISRS)?",
-                options: [
-                    "Amitriptilina",
-                    "Fluoxetina",
-                    "Venlafaxina",
-                    "Fenelzina"
-                ],
-                answer: "Fluoxetina"
-            },
-            // Pregunta 26
-            {
-                question: "El alopurinol se utiliza en el tratamiento crónico de la gota para reducir la producción de:",
-                options: [
-                    "Ácido láctico",
-                    "Ácido úrico",
-                    "Creatinina",
-                    "Glucosa"
-                ],
-                answer: "Ácido úrico"
-            },
-            // Pregunta 27
-            {
-                question: "El uso prolongado de corticoides puede provocar:",
-                options: [
-                    "Hipotensión",
-                    "Síndrome de Cushing",
-                    "Hipoglucemia",
-                    "Hipertrofia muscular"
-                ],
-                answer: "Síndrome de Cushing"
-            },
-            // Pregunta 28
-            {
-                question: "La Heparina actúa potenciando la acción de:",
-                options: [
-                    "Trombina",
-                    "Factores de coagulación",
-                    "Antitrombina III",
-                    "Fibrinógeno"
-                ],
-                answer: "Antitrombina III"
-            },
-            // Pregunta 29
-            {
-                question: "Los antagonistas de los receptores de angiotensina II (ARA II) suelen terminar en:",
-                options: [
-                    "-pril",
-                    "-sartán",
-                    "-olol",
-                    "-glitazona"
-                ],
-                answer: "-sartán"
-            },
-            // Pregunta 30
-            {
-                question: "La insulina NPH tiene un inicio de acción:",
-                options: [
-                    "Ultrarrápido",
-                    "Rápido",
-                    "Intermedio",
-                    "Prolongado"
-                ],
-                answer: "Intermedio"
-            },
-            // Pregunta 31
-            {
-                question: "El efecto adverso más común de la Aspirina (Ácido acetilsalicílico) es:",
-                options: [
-                    "Hepatotoxicidad",
-                    "Hemorragia gastrointestinal",
-                    "Nefrotoxicidad",
-                    "Hipoglucemia"
-                ],
-                answer: "Hemorragia gastrointestinal"
-            },
-            // Pregunta 32
-            {
-                question: "La Ranitidina es un fármaco que actúa como:",
-                options: [
-                    "Inhibidor de la bomba de protones",
-                    "Antagonista de receptores H2",
-                    "Antiácido sistémico",
-                    "Procinético"
-                ],
-                answer: "Antagonista de receptores H2"
-            },
-            // Pregunta 33
-            {
-                question: "Los Macrólidos, como la Azitromicina, inhiben la síntesis de:",
-                options: [
-                    "Pared celular",
-                    "Ácido fólico",
-                    "Membrana plasmática",
-                    "Proteínas (subunidad 50S)"
-                ],
-                answer: "Proteínas (subunidad 50S)"
-            },
-            // Pregunta 34
-            {
-                question: "Un efecto adverso de la Ciclosporina (inmunosupresor) es:",
-                options: [
-                    "Hipertensión y nefrotoxicidad",
-                    "Hipotensión y hepatotoxicidad",
-                    "Hipercalcemia",
-                    "Hiponatremia"
-                ],
-                answer: "Hipertensión y nefrotoxicidad"
-            },
-            // Pregunta 35
-            {
-                question: "¿Cuál es el principal uso del Sildenafilo?",
-                options: [
-                    "Hipertensión pulmonar e insuficiencia cardíaca",
-                    "Disfunción eréctil e hipertensión pulmonar",
-                    "Artritis reumatoide",
-                    "Angina de pecho"
-                ],
-                answer: "Disfunción eréctil e hipertensión pulmonar"
-            },
-            // Pregunta 36
-            {
-                question: "El fármaco Loperamida se utiliza para tratar:",
-                options: [
-                    "Estreñimiento crónico",
-                    "Diarrea aguda",
-                    "Úlcera gástrica",
-                    "Náuseas y vómitos"
-                ],
-                answer: "Diarrea aguda"
-            },
-            // Pregunta 37
-            {
-                question: "Los Calcioantagonistas (Dihidropiridinas) como el Nifedipino son primariamente:",
-                options: [
-                    "Diuréticos",
-                    "Vasodilatadores periféricos",
-                    "Anticoagulantes",
-                    "Antiarrítmicos"
-                ],
-                answer: "Vasodilatadores periféricos"
-            },
-            // Pregunta 38
-            {
-                question: "La Furosemida es un diurético de:",
-                options: [
-                    "Ahorrador de potasio",
-                    "Tiazida",
-                    "Asa (High-Ceiling)",
-                    "Osmótico"
-                ],
-                answer: "Asa (High-Ceiling)"
-            },
-            // Pregunta 39
-            {
-                question: "El Dextrometorfano es un fármaco utilizado para:",
-                options: [
-                    "Aliviar la congestión nasal",
-                    "Suprimir la tos",
-                    "Estimular la expectoración",
-                    "Tratar la bronquitis bacteriana"
-                ],
-                answer: "Suprimir la tos"
-            },
-            // Pregunta 40
-            {
-                question: "¿Qué fármaco se usa para la enfermedad de Parkinson al aumentar la dopamina en el cerebro?",
-                options: [
-                    "Haloperidol",
-                    "Levodopa/Carbidopa",
-                    "Clonazepam",
-                    "Litio"
-                ],
-                answer: "Levodopa/Carbidopa"
-            },
-            // Pregunta 41
-            {
-                question: "El efecto de la Tolbutamida (Sulfonilurea) es:",
-                options: [
-                    "Reducir la absorción de glucosa",
-                    "Aumentar la sensibilidad a la insulina",
-                    "Estimular la secreción de insulina",
-                    "Inhibir la gluconeogénesis"
-                ],
-                answer: "Estimular la secreción de insulina"
-            },
-            // Pregunta 42
-            {
-                question: "La Lidocaína actúa como anestésico local bloqueando:",
-                options: [
-                    "Canales de calcio",
-                    "Canales de sodio",
-                    "Canales de potasio",
-                    "Receptores nicotínicos"
-                ],
-                answer: "Canales de sodio"
-            },
-            // Pregunta 43
-            {
-                question: "El Iodo radiactivo (I-131) se usa para tratar:",
-                options: [
-                    "Hipertiroidismo",
-                    "Hipotiroidismo",
-                    "Diabetes insípida",
-                    "Osteoporosis"
-                ],
-                answer: "Hipertiroidismo"
-            },
-            // Pregunta 44
-            {
-                question: "¿Qué antibiótico tiene un riesgo de ototoxicidad y nefrotoxicidad?",
-                options: [
-                    "Penicilina G",
-                    "Clindamicina",
-                    "Gentamicina (Aminoglucósido)",
-                    "Doxiciclina"
-                ],
-                answer: "Gentamicina (Aminoglucósido)"
-            },
-            // Pregunta 45
-            {
-                question: "El fármaco de elección para la profilaxis de migraña crónica es a menudo un:",
-                options: [
-                    "Diurético de asa",
-                    "Bloqueador beta",
-                    "Benzodiacepina",
-                    "Antihistamínico"
-                ],
-                answer: "Bloqueador beta"
-            },
-            // Pregunta 46
-            {
-                question: "La Cisaprida es un procinético que actúa sobre los receptores de:",
-                options: [
-                    "Dopamina",
-                    "Serotonina (5-HT4)",
-                    "Opioides",
-                    "Histamina"
-                ],
-                answer: "Serotonina (5-HT4)"
-            },
-            // Pregunta 47
-            {
-                question: "La Aspirina a dosis bajas se utiliza para prevenir eventos cardiovasculares debido a su efecto:",
-                options: [
-                    "Antihipertensivo",
-                    "Antiinflamatorio",
-                    "Antiagregante plaquetario",
-                    "Vasodilatador"
-                ],
-                answer: "Antiagregante plaquetario"
-            },
-            // Pregunta 48
-            {
-                question: "¿Qué fármaco es un glucocorticoide potente con acción antiinflamatoria?",
-                options: [
-                    "Enalapril",
-                    "Prednisona",
-                    "Metoclopramida",
-                    "Amlodipino"
-                ],
-                answer: "Prednisona"
-            },
-            // Pregunta 49
-            {
-                question: "La Metoclopramida se utiliza principalmente como antiemético y:",
-                options: [
-                    "Antihistamínico",
-                    "Procinético",
-                    "Antiácido",
-                    "Relajante muscular"
-                ],
-                answer: "Procinético"
-            },
-            // Pregunta 50
-            {
-                question: "El Litio es el tratamiento principal para:",
-                options: [
-                    "Depresión mayor",
-                    "Esquizofrenia",
-                    "Trastorno Bipolar",
-                    "Trastorno de Ansiedad Generalizada"
-                ],
-                answer: "Trastorno Bipolar"
-            }
-        ];
-
-        // ====================================================================
-        // 2. LÓGICA DEL QUIZ 
-        // ====================================================================
-
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let answered = false;
-        
         // Referencias a los elementos HTML
         const welcomeArea = document.getElementById('welcome-area');
-        const startQuizBtn = document.getElementById('start-quiz-btn');
+        const startButton = document.getElementById('start-button');
         const passwordInput = document.getElementById('password-input');
         const passwordError = document.getElementById('password-error');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const submitBtn = document.getElementById('submit-btn');
-        const quizArea = document.getElementById('quiz-area');
-        const resultsArea = document.getElementById('results-area');
-        const scoreText = document.getElementById('score-text');
+        const contentArea = document.getElementById('content-area');
 
-
-        function loadQuestion() {
-            if (currentQuestionIndex >= quizQuestions.length) {
-                showResults();
-                return;
-            }
-
-            answered = false;
-            submitBtn.disabled = true;
-            optionsContainer.innerHTML = ''; 
-
-            const currentQuestion = quizQuestions[currentQuestionIndex];
-            questionText.textContent = `Pregunta ${currentQuestionIndex + 1} de ${quizQuestions.length}: ${currentQuestion.question}`;
-            submitBtn.textContent = "Comprobar Respuesta"; 
-
-            currentQuestion.options.forEach(option => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                button.classList.add('option-btn');
-                button.onclick = () => selectOption(button, option);
-                optionsContainer.appendChild(button);
-            });
-        }
-
-        function selectOption(selectedButton, selectedAnswer) {
-            if (answered) return; 
-
-            document.querySelectorAll('.option-btn').forEach(btn => {
-                btn.classList.remove('selected');
-                btn.removeAttribute('data-selected');
-            });
-
-            selectedButton.classList.add('selected');
-            selectedButton.setAttribute('data-selected', selectedAnswer);
-            submitBtn.disabled = false; 
-        }
-
-
-        function checkAnswer() {
-            if (answered) {
-                currentQuestionIndex++;
-                loadQuestion();
-                return;
-            }
-
-            const selectedButton = document.querySelector('.option-btn.selected');
-            
-            if (!selectedButton) {
-                alert("Por favor, selecciona una opción antes de continuar.");
-                return;
-            }
-
-            answered = true;
-            
-            const selectedAnswer = selectedButton.getAttribute('data-selected');
-            const correctAnswer = quizQuestions[currentQuestionIndex].answer;
-
-            document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
-
-            if (selectedAnswer === correctAnswer) {
-                score++;
-                selectedButton.classList.add('correct');
-            } else {
-                selectedButton.classList.add('incorrect');
-                document.querySelectorAll('.option-btn').forEach(btn => {
-                    if (btn.textContent === correctAnswer) {
-                        btn.classList.add('correct');
-                    }
-                });
-            }
-            
-            submitBtn.textContent = "Siguiente Pregunta";
-        }
-
-
-        function showResults() {
-            quizArea.classList.add('hidden');
-            resultsArea.classList.remove('hidden');
-
-            const totalQuestions = quizQuestions.length;
-            const percentage = ((score / totalQuestions) * 100).toFixed(1);
-
-            scoreText.innerHTML = `Obtuviste **${score}** de **${totalQuestions}** correctas. (${percentage}%)`;
-            
-            if (percentage >= 80) {
-                scoreText.innerHTML += '<p style="color: green; font-weight: bold;">¡Felicidades, tu conocimiento es sólido!</p>';
-            } else if (percentage >= 50) {
-                scoreText.innerHTML += '<p style="color: orange;">Sigue practicando; estás cerca de dominarlo.</p>';
-            } else {
-                scoreText.innerHTML += '<p style="color: red;">Es momento de repasar los temas más importantes.</p>';
-            }
-        }
-        
-        // FUNCIÓN CLAVE: VERIFICA LA CONTRASEÑA E INICIA EL QUIZ
+        // FUNCIÓN CLAVE: VERIFICA LA CONTRASEÑA Y MUESTRA EL CONTENIDO
         function checkPassword() {
-            // .trim() elimina espacios en blanco al inicio o final
-            const enteredPassword = passwordInput.value.trim(); 
+            const enteredPassword = passwordInput.value.trim(); // .trim() elimina espacios en blanco al inicio o final
             passwordError.classList.add('hidden'); // Ocultar el error por defecto
 
             if (enteredPassword === ACCESS_PASSWORD) {
-                welcomeArea.classList.add('hidden');
-                quizArea.classList.remove('hidden');
-                loadQuestion();
+                welcomeArea.classList.add('hidden'); // Oculta la bienvenida
+                contentArea.classList.remove('hidden'); // Muestra el área de contenido
             } else {
                 passwordError.classList.remove('hidden'); // Mostrar mensaje de error
                 passwordInput.value = ''; // Limpiar el campo
-                passwordInput.focus();
+                passwordInput.focus(); // Dejar el cursor en el campo para reintentar
             }
         }
 
         // --- Event Listeners ---
-        startQuizBtn.addEventListener('click', checkPassword);
-        submitBtn.addEventListener('click', checkAnswer);
+        startButton.addEventListener('click', checkPassword);
         
         // Permite presionar Enter para intentar iniciar sesión
         passwordInput.addEventListener('keypress', function (e) {
