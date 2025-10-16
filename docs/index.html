@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharma Mind Quiz</title>
+    <title>Pharma Mind </title>
     
     <style>
         body {
@@ -163,16 +163,16 @@
     <header>
         <div class="header-info">
             <h1>Pharma Mind Quiz</h1>
-            <p>Desarrollado por: **Blandon Yerman**</p>
-            <p>Materia desarrollada por: **[Nombre del Profesor/a Aquí]**</p>
+            <p>Desarrollado por: **Bigar**</p>
+            <p>Web desarrollada para: Para nada</p>
         </div>
     </header>
 
     <div class="container">
         
         <div id="welcome-area">
-            <h2>¡Bienvenido/a a Pharma Mind Quiz!</h2>
-            <p>Estás a punto de iniciar una práctica de **50 preguntas** para consolidar tus conocimientos de farmacología.</p>
+            <h2>¡Bienvenido a Pharma Mind!</h2>
+            <p>Estás a punto de iniciar una práctica de 50 preguntas para consolidar tus conocimientos de farmacología.</p>
             
             <p>🔑 Por favor, ingresa la clave de acceso para comenzar:</p>
             <input type="password" id="password-input" placeholder="Clave de Acceso">
@@ -201,7 +201,7 @@
         // ====================================================================
         
         // --- CLAVE DE ACCESO ---
-        const ACCESS_PASSWORD = "mariana"; 
+        const ACCESS_PASSWORD = "bigar2002"; 
 
         // --- PREGUNTAS (50 Ejemplos) ---
         const quizQuestions = [
@@ -595,4 +595,308 @@
                 question: "El fármaco Loperamida se utiliza para tratar:",
                 options: [
                     "Estreñimiento crónico",
-      
+                    "Diarrea aguda",
+                    "Úlcera gástrica",
+                    "Náuseas y vómitos"
+                ],
+                answer: "Diarrea aguda"
+            },
+            // Pregunta 37
+            {
+                question: "Los Calcioantagonistas (Dihidropiridinas) como el Nifedipino son primariamente:",
+                options: [
+                    "Diuréticos",
+                    "Vasodilatadores periféricos",
+                    "Anticoagulantes",
+                    "Antiarrítmicos"
+                ],
+                answer: "Vasodilatadores periféricos"
+            },
+            // Pregunta 38
+            {
+                question: "La Furosemida es un diurético de:",
+                options: [
+                    "Ahorrador de potasio",
+                    "Tiazida",
+                    "Asa (High-Ceiling)",
+                    "Osmótico"
+                ],
+                answer: "Asa (High-Ceiling)"
+            },
+            // Pregunta 39
+            {
+                question: "El Dextrometorfano es un fármaco utilizado para:",
+                options: [
+                    "Aliviar la congestión nasal",
+                    "Suprimir la tos",
+                    "Estimular la expectoración",
+                    "Tratar la bronquitis bacteriana"
+                ],
+                answer: "Suprimir la tos"
+            },
+            // Pregunta 40
+            {
+                question: "¿Qué fármaco se usa para la enfermedad de Parkinson al aumentar la dopamina en el cerebro?",
+                options: [
+                    "Haloperidol",
+                    "Levodopa/Carbidopa",
+                    "Clonazepam",
+                    "Litio"
+                ],
+                answer: "Levodopa/Carbidopa"
+            },
+            // Pregunta 41
+            {
+                question: "El efecto de la Tolbutamida (Sulfonilurea) es:",
+                options: [
+                    "Reducir la absorción de glucosa",
+                    "Aumentar la sensibilidad a la insulina",
+                    "Estimular la secreción de insulina",
+                    "Inhibir la gluconeogénesis"
+                ],
+                answer: "Estimular la secreción de insulina"
+            },
+            // Pregunta 42
+            {
+                question: "La Lidocaína actúa como anestésico local bloqueando:",
+                options: [
+                    "Canales de calcio",
+                    "Canales de sodio",
+                    "Canales de potasio",
+                    "Receptores nicotínicos"
+                ],
+                answer: "Canales de sodio"
+            },
+            // Pregunta 43
+            {
+                question: "El Iodo radiactivo (I-131) se usa para tratar:",
+                options: [
+                    "Hipertiroidismo",
+                    "Hipotiroidismo",
+                    "Diabetes insípida",
+                    "Osteoporosis"
+                ],
+                answer: "Hipertiroidismo"
+            },
+            // Pregunta 44
+            {
+                question: "¿Qué antibiótico tiene un riesgo de ototoxicidad y nefrotoxicidad?",
+                options: [
+                    "Penicilina G",
+                    "Clindamicina",
+                    "Gentamicina (Aminoglucósido)",
+                    "Doxiciclina"
+                ],
+                answer: "Gentamicina (Aminoglucósido)"
+            },
+            // Pregunta 45
+            {
+                question: "El fármaco de elección para la profilaxis de migraña crónica es a menudo un:",
+                options: [
+                    "Diurético de asa",
+                    "Bloqueador beta",
+                    "Benzodiacepina",
+                    "Antihistamínico"
+                ],
+                answer: "Bloqueador beta"
+            },
+            // Pregunta 46
+            {
+                question: "La Cisaprida es un procinético que actúa sobre los receptores de:",
+                options: [
+                    "Dopamina",
+                    "Serotonina (5-HT4)",
+                    "Opioides",
+                    "Histamina"
+                ],
+                answer: "Serotonina (5-HT4)"
+            },
+            // Pregunta 47
+            {
+                question: "La Aspirina a dosis bajas se utiliza para prevenir eventos cardiovasculares debido a su efecto:",
+                options: [
+                    "Antihipertensivo",
+                    "Antiinflamatorio",
+                    "Antiagregante plaquetario",
+                    "Vasodilatador"
+                ],
+                answer: "Antiagregante plaquetario"
+            },
+            // Pregunta 48
+            {
+                question: "¿Qué fármaco es un glucocorticoide potente con acción antiinflamatoria?",
+                options: [
+                    "Enalapril",
+                    "Prednisona",
+                    "Metoclopramida",
+                    "Amlodipino"
+                ],
+                answer: "Prednisona"
+            },
+            // Pregunta 49
+            {
+                question: "La Metoclopramida se utiliza principalmente como antiemético y:",
+                options: [
+                    "Antihistamínico",
+                    "Procinético",
+                    "Antiácido",
+                    "Relajante muscular"
+                ],
+                answer: "Procinético"
+            },
+            // Pregunta 50
+            {
+                question: "El Litio es el tratamiento principal para:",
+                options: [
+                    "Depresión mayor",
+                    "Esquizofrenia",
+                    "Trastorno Bipolar",
+                    "Trastorno de Ansiedad Generalizada"
+                ],
+                answer: "Trastorno Bipolar"
+            }
+        ];
+
+        // ====================================================================
+        // 2. LÓGICA DEL QUIZ 
+        // ====================================================================
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+        
+        // Referencias a los elementos HTML
+        const welcomeArea = document.getElementById('welcome-area');
+        const startQuizBtn = document.getElementById('start-quiz-btn');
+        const passwordInput = document.getElementById('password-input');
+        const passwordError = document.getElementById('password-error');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const submitBtn = document.getElementById('submit-btn');
+        const quizArea = document.getElementById('quiz-area');
+        const resultsArea = document.getElementById('results-area');
+        const scoreText = document.getElementById('score-text');
+
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizQuestions.length) {
+                showResults();
+                return;
+            }
+
+            answered = false;
+            submitBtn.disabled = true;
+            optionsContainer.innerHTML = ''; 
+
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+            questionText.textContent = `Pregunta ${currentQuestionIndex + 1} de ${quizQuestions.length}: ${currentQuestion.question}`;
+            submitBtn.textContent = "Comprobar Respuesta"; 
+
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('option-btn');
+                button.onclick = () => selectOption(button, option);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectOption(selectedButton, selectedAnswer) {
+            if (answered) return; 
+
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                btn.removeAttribute('data-selected');
+            });
+
+            selectedButton.classList.add('selected');
+            selectedButton.setAttribute('data-selected', selectedAnswer);
+            submitBtn.disabled = false; 
+        }
+
+
+        function checkAnswer() {
+            if (answered) {
+                currentQuestionIndex++;
+                loadQuestion();
+                return;
+            }
+
+            const selectedButton = document.querySelector('.option-btn.selected');
+            
+            if (!selectedButton) {
+                alert("Por favor, selecciona una opción antes de continuar.");
+                return;
+            }
+
+            answered = true;
+            
+            const selectedAnswer = selectedButton.getAttribute('data-selected');
+            const correctAnswer = quizQuestions[currentQuestionIndex].answer;
+
+            document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+
+            if (selectedAnswer === correctAnswer) {
+                score++;
+                selectedButton.classList.add('correct');
+            } else {
+                selectedButton.classList.add('incorrect');
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    if (btn.textContent === correctAnswer) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+            
+            submitBtn.textContent = "Siguiente Pregunta";
+        }
+
+
+        function showResults() {
+            quizArea.classList.add('hidden');
+            resultsArea.classList.remove('hidden');
+
+            const totalQuestions = quizQuestions.length;
+            const percentage = ((score / totalQuestions) * 100).toFixed(1);
+
+            scoreText.innerHTML = `Obtuviste **${score}** de **${totalQuestions}** correctas. (${percentage}%)`;
+            
+            if (percentage >= 80) {
+                scoreText.innerHTML += '<p style="color: green; font-weight: bold;">¡Felicidades, tu conocimiento es sólido!</p>';
+            } else if (percentage >= 50) {
+                scoreText.innerHTML += '<p style="color: orange;">Sigue practicando; estás cerca de dominarlo.</p>';
+            } else {
+                scoreText.innerHTML += '<p style="color: red;">Es momento de repasar los temas más importantes.</p>';
+            }
+        }
+        
+        // FUNCIÓN CLAVE: VERIFICA LA CONTRASEÑA E INICIA EL QUIZ
+        function checkPassword() {
+            // .trim() elimina espacios en blanco al inicio o final
+            const enteredPassword = passwordInput.value.trim(); 
+            passwordError.classList.add('hidden'); // Ocultar el error por defecto
+
+            if (enteredPassword === ACCESS_PASSWORD) {
+                welcomeArea.classList.add('hidden');
+                quizArea.classList.remove('hidden');
+                loadQuestion();
+            } else {
+                passwordError.classList.remove('hidden'); // Mostrar mensaje de error
+                passwordInput.value = ''; // Limpiar el campo
+                passwordInput.focus();
+            }
+        }
+
+        // --- Event Listeners ---
+        startQuizBtn.addEventListener('click', checkPassword);
+        submitBtn.addEventListener('click', checkAnswer);
+        
+        // Permite presionar Enter para intentar iniciar sesión
+        passwordInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
